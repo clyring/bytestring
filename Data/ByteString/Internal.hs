@@ -838,9 +838,9 @@ checkedMul fun !x@(I# x#) !y@(I# y#) = assert (min x y >= 0) $
     _ -> overflowError fun
 #else
   case timesWord2# (int2Word# x#) (int2Word# y#) of
-    (# hi, lo #) -> case word2Int# (or# hi (uncheckedShiftRL# lo shiftAmt)) of
-      0# -> I# (word2Int# lo)
-      _  -> overflowError fun
+    (# hi, lo #) -> case or# hi (uncheckedShiftRL# lo shiftAmt) of
+      0## -> I# (word2Int# lo)
+      _   -> overflowError fun
   where !(I# shiftAmt) = finiteBitSize (0 :: Word) - 1
 #endif
 
