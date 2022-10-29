@@ -3,6 +3,7 @@
 #include <string.h>
 
 
+#ifdef SBS_MEMCMP_OFF
 int
 sbs_memcmp_off(const void *s1,
             size_t off1,
@@ -17,6 +18,7 @@ sbs_memcmp_off(const void *s1,
 
     return r;
 }
+#endif
 
 ptrdiff_t
 sbs_elem_index(const void *s,

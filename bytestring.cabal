@@ -137,6 +137,8 @@ library
   
   -- DNDEBUG disables asserts in cbits/
   cc-options:        -std=c11 -DNDEBUG=1
+  if !impl(ghc >= 8.4)
+    cc-options:      -DSBS_MEMCMP_OFF=1
  
   -- No need to link to libgcc on ghc-9.4 and later which uses a clang-based
   -- toolchain.
